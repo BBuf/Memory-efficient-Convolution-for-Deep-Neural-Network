@@ -22,7 +22,7 @@ void im2col_mec(float** src, const int &inHeight, const int &intWidth, const int
     for(int i = 0; i < outWidth; i++){
         int outrow = 0;
         for(int j = 0; j < inHeight; j++){
-            for(int k = i; k < i + kernel_w; k++){
+            for(int k = i; k < i + kWidth; k++){
                 srcIm2col[outrow * outWidth + i] = src[j][k];
                 outrow++;
             }
