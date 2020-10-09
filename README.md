@@ -19,7 +19,8 @@ MEC: Memory-efficient Convolution for Deep Neural Network C++个人实现，[论
 |方法|速度|内存占用|
 |--|--|--|
 |Im2Col+Origin|52ms||
-|MEC|||
+|MEC(4线程)|17ms||
+|MEC(1线程)|42ms||
 
 
 
