@@ -9,10 +9,14 @@ MEC: Memory-efficient Convolution for Deep Neural Network C++个人实现，[论
 - OpenMP
 
 # 编译&运行
-- g++ -o demo1 Im2ColOrigin.cpp /usr/lib/atlas-base/libcblas.so.3.0 -fopenmp & ./demo1
-- g++ -o demo2 Im2ColMEC.cpp /usr/lib/atlas-base/libcblas.so.3.0 -fopenmp & ./demo2
+- g++ -o demo1 Im2ColOrigin.cpp /usr/lib/x86_64-linux-gnu/libcblas.so.3 -fopenmp 
+- ./demo1
+- g++ -o demo2 Im2ColMEC.cpp /usr/lib/x86_64-linux-gnu/libcblas.so.3 -fopenmp 
+- ./demo2
 
 # 速度测试、内存占用测试
+
+
 
 
 

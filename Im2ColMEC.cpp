@@ -43,7 +43,7 @@ int main(){
     for(int i = 0; i < inHeight; i++){
         src[i] = new float[inWidth];
         for(int j = 0; j < inWidth; j++){
-            src[i][j] = rand()%100;
+            src[i][j] = 0.1;
         }
     }
     // 构造kernel矩阵
@@ -53,7 +53,7 @@ int main(){
         for(int j = 0; j < kernel_h; j++){
             kernel[i][j] = new float[kernel_w];
             for(int k = 0; k < kernel_w; k++){
-                kernel[i][j][k] = rand()%100;
+                kernel[i][j][k] = 0.2;
             }
         }
     }
@@ -97,17 +97,20 @@ int main(){
     // 
     delete [] kernel2col;
     delete [] srcIm2col;
-    delete [] output;
+    
+    for(int i = 0; i < outHeight; i++){
+        delete [] output[i];
+    }
 
     for(int i = 0; i < kernel_num; i++){
         for(int j = 0; j < kernel_h; j++){
-            delete kernel[i][j];
+            delete [] kernel[i][j];
         }
-        delete kernel[i];
+        delete [] kernel[i];
     }
 
     for(int i = 0; i < inHeight; i++){
-        delete src[i];
+        delete [] src[i];
     }
 
     return 0;

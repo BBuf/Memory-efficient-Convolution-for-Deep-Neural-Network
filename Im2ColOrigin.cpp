@@ -47,7 +47,7 @@ int main(){
     for(int i = 0; i < inHeight; i++){
         src[i] = new float[inWidth];
         for(int j = 0; j < inWidth; j++){
-            src[i][j] = rand()%100;
+            src[i][j] = 0.1;
         }
     }
     // 构造kernel矩阵
@@ -57,7 +57,7 @@ int main(){
         for(int j = 0; j < kernel_h; j++){
             kernel[i][j] = new float[kernel_w];
             for(int k = 0; k < kernel_w; k++){
-                kernel[i][j][k] = rand()%100;
+                kernel[i][j][k] = 0.2;
             }
         }
     }
@@ -83,7 +83,7 @@ int main(){
     im2col_cpu(src, inHeight, inWidth, kernel_h, kernel_w, srcIm2col);
 
     // 使用Blas库实现矩阵乘法
-    float *output = new float[kernel_w * kernel_h * outHeight * outWidth];
+    float *output = new float[kernel_num * outHeight * outWidth];
     cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,kernel_num,
         outHeight*outWidth, kernel_w*kernel_h, 1,
         kernel2col, kernel_h*kernel_w,
@@ -100,13 +100,13 @@ int main(){
 
     for(int i = 0; i < kernel_num; i++){
         for(int j = 0; j < kernel_h; j++){
-            delete kernel[i][j];
+            delete [] kernel[i][j];
         }
-        delete kernel[i];
+        delete [] kernel[i];
     }
 
     for(int i = 0; i < inHeight; i++){
-        delete src[i];
+        delete [] src[i];
     }
 
     return 0;
